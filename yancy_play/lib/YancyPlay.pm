@@ -61,23 +61,23 @@ sub startup {
 
 
 sub yancy_collections {
-  my $collections =   {   
-                Film=> {
-                        "title" => "Films" ,
-                        "x-id-field" => 'film_id' ,
-                        "x-list-columns" => [ 'film_id' ,  'title' ] , 
-                        properties => {
-                                film_id => { type => 'number', readOnly => 1, },
-                                title => { 
+				my $collections =   {   
+								Film=> {
+												"title" => "Films" ,
+												"x-id-field" => 'film_id' ,
+												"x-list-columns" => [ 'film_id' ,  'title' ] , 
+												properties => {
+																film_id => { type => 'number', readOnly => 1, },
+																title => { 
 																				type => 'string',
-																				'x-filter-output' => [
-																								[ 'yancy.wrap' => qw(mycontainer) ],
-																				],
 																}
-                        }   
-                }   
-  };  
-  return $collections ;
+												},   
+												'x-filter-output' => [
+																[ 'yancy.wrap' => qw(mycontainer) ],
+												],
+								}   
+				};  
+				return $collections ;
 }
 
 1;
