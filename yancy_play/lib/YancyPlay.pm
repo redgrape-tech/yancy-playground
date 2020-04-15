@@ -70,11 +70,11 @@ sub yancy_collections {
 																film_id => { type => 'number', readOnly => 1, },
 																title => { 
 																				type => 'string',
+																				'x-filter-output' => [
+																								[ 'yancy.wrap' => qw(mycontainer) ],
+																				],
 																}
 												},   
-												'x-filter-output' => [
-																[ 'yancy.wrap' => qw(mycontainer) ],
-												],
 								}   
 				};  
 				return $collections ;
