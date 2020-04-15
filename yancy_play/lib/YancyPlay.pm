@@ -38,7 +38,39 @@ sub startup {
 	my $count = $rs->count;
 	$log->debug("sample query result: distinct film title is: $count");
 
+	my $backend = {
+					Dbic => [
+									'Play::Schema',
+									$dsn ,
+									undef, undef,
+									{ PrintError => 1 },
+					],
+	};
 
+  $self->plugin('Yancy'  ,   
+          {   
+                  backend => $backend,
+                  schema => &yancy_collections 
+          }   
+  );  
+
+}
+
+
+
+sub yancy_collections {
+  my $collections =   {   
+                Film=> {
+                        "title" => "Films" ,
+                        "x-id-field" => 'film_id' ,
+                        "x-list-columns" => [ 'film_id' ,  'title' ] , 
+                        properties => {
+                                film_id => { type => 'number', readOnly => 1, },
+                                title => { type => 'string' }
+                        }   
+                }   
+  };  
+  return $collections ;
 }
 
 1;
