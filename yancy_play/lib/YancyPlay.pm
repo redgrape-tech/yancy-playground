@@ -66,7 +66,12 @@ sub yancy_collections {
                         "x-list-columns" => [ 'film_id' ,  'title' ] , 
                         properties => {
                                 film_id => { type => 'number', readOnly => 1, },
-                                title => { type => 'string' }
+                                title => { 
+																				type => 'string',
+																				'x-filter-output' => [
+																								[ 'yancy.wrap' => qw(mycontainer) ],
+																				],
+																}
                         }   
                 }   
   };  
