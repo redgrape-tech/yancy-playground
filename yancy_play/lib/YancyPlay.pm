@@ -54,6 +54,8 @@ sub startup {
           }   
   );  
 
+	$log->info("Yancy version is $Yancy::VERSION");
+
 }
 
 
